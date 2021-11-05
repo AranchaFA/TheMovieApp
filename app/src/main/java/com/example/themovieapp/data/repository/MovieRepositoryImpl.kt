@@ -1,6 +1,6 @@
 package com.example.themovieapp.data.repository
 
-import com.example.themovieapp.data.model.MovieListDTO
+import com.example.themovieapp.data.model.MovieListResponse
 import com.example.themovieapp.utils.Constants
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
@@ -15,12 +15,12 @@ class MovieRepositoryImpl(private val iMovieRepository: IMovieRepository) {
             .build().create(IMovieRepository::class.java)
     }
 
-    suspend fun getUpcomingMovies(): MovieListDTO =
+    suspend fun getUpcomingMovies(): MovieListResponse =
         movieRepositoryClient.getUpcomingMovies(Constants.API_KEY)
 
-    suspend fun getTopRatedMovies(): MovieListDTO =
+    suspend fun getTopRatedMovies(): MovieListResponse =
         movieRepositoryClient.getTopRatedMovies(Constants.API_KEY)
 
-    suspend fun getPopularMovies(): MovieListDTO =
+    suspend fun getPopularMovies(): MovieListResponse =
         movieRepositoryClient.getPopularMovies(Constants.API_KEY)
 }
